@@ -50,7 +50,7 @@ public class CoreRequest {
     /**
      * 暂存client
      */
-    private CloseableHttpClient client;
+    private CloseableHttpClient client = hb.build();
 
     /**
      * 获取响应体内容
@@ -93,10 +93,6 @@ public class CoreRequest {
     }
 
     private CloseableHttpResponse getResponse(HttpClientContext context, String url, String method, Map<String, ? super String> headers, HttpEntity entity2) throws IOException {
-        if(client != null){
-            client.close();
-        }
-        client = hb.build();
         try {
             CloseableHttpResponse execute = null;
 
